@@ -1,0 +1,44 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Importer {% endblock %}
+
+{% block dashboard_title %}
+    Importer
+{% endblock %}
+
+{% block dashboard_main %}
+    {{ form_start(importerForm,{'attr': {'class': 'form form-column form-dashboard'}}) }}
+    <h2 class="form__title">Select files</h2>
+    <p class="form-dashboard__info-message">The initial step is to allocate the appropriate files to the corresponding wholesalers, not adding a file entails that a particular wholesaler will be skipped</p>
+
+    <div class="form-column__content">
+        {% for wholesaler in wholesalers %}
+            <div class="form-column__content-column">
+                <div class="form-dashboard__upload-file-wrapper">
+                    {{ form_label(importerForm['wholesaler_file-' ~ wholesaler.getId()], wholesaler.name, {'label_attr': {'class': 'form-label'}}) }}
+                    <span class="form-dashboard__upload-file-label">Upload CSV file</span>
+                    <span class="form-dashboard__upload-file-name"></span>
+                    <span class="material-symbols-outlined form-dashboard__upload-file-wrapper-icon">csv</span>
+                    {{ form_widget(importerForm['wholesaler_file-' ~ wholesaler.getId()], {'attr': {'class': 'form-upload-file form-input-dashboard'}}) }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <h2 class="form__title">Other settings</h2>
+    <div class="form-column__content">
+        <div class="form-column__content-column">
+            {{ form_label(importerForm.exclude_products, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(importerForm.exclude_products, {'attr': {'class': 'form-input form-input-dashboard', 'placeholder': '5907656600019,5010993346677'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(importerForm.exclude_product_status, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(importerForm.exclude_product_status, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+    </div>
+
+    <div class="form-dashboard__actions">
+        {{ form_widget(importerForm.save, {'attr': {'class': 'btn btn-accept btn-form-dashboard'}}) }}
+    </div>
+
+    {{ form_end(importerForm) }}
+{% endblock %}

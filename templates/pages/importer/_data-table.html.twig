@@ -1,0 +1,45 @@
+{% import 'macros/macros.html.twig' as ui %}
+
+{% extends 'ui/base-table.html.twig' %}
+
+    {% block table_header %}
+        <th>EAN</th>
+        <th>Product Name</th>
+        <th>Shoper product Id</th>
+        <th>Category</th>
+        <th>Publisher</th>
+        <th>Stock</th>
+        <th>Store stock</th>
+        <th>From file</th>
+        <th>Shoper store</th>
+        <th>Actions</th>
+    {% endblock %}
+
+    {% block table_body %}
+        {% for importerRecord in importerData %}
+            <tr class="base-table__row {% if importerRecord.isExecuted() %} base-table__row--executed {% endif %}">
+                <td>{{ importerRecord.getEan() }}</td>
+                <td class="base-table__row--product-name">{{ importerRecord.getProductName() }}</td>
+                <td>{{ importerRecord.getShoperProductId() }}</td>
+                <td>{{ importerRecord.getCategory() }}</td>
+                <td>{{ importerRecord.getFilePublisher() }}</td>
+                <td class="base-table__row--stock">{{ importerRecord.getStock() }}</td>
+                <td class="base-table__row--old-stock">{{ importerRecord.getOldStock() }}</td>
+                <td>{{ importerRecord.getFromFile() }}</td>
+                <td>
+                    <a class="btn-link btn-link--small btn-link--action" href="{{ importerRecord.getPermalink() }}" target="_blank">
+                        <span class="btn-link__icon  material-symbols-outlined">storefront</span>
+                    </a>
+                </td>
+                <td class="base-table__row--actions">
+                    <a class="btn-link btn-link--small btn-link--action"
+                       href="{{ path('app_importer_execute_single', {'id': importerRecord.getId()}) }}"
+                       onclick="return confirm('Are you sure you want to execute this import?');">
+                        <span class="btn-link__icon material-symbols-outlined">input_circle</span>
+                    </a>
+
+                    {{ ui.delete_button('app_importer_delete_single', importerRecord.getId(), 'delete_single_') }}
+                </td>
+            </tr>
+        {% endfor %}
+{% endblock %}

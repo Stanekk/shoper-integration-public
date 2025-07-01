@@ -1,0 +1,195 @@
+@use "variables" as *;
+
+.wholesalers {
+  &__list {
+    margin-top: 32px;
+    display: flex;
+    column-gap: 24px;
+    row-gap: 32px;
+    flex-wrap: wrap;
+  }
+}
+
+.wholesaler {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: calc(50% - 12px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 9px 6px rgb(243 243 243);
+  overflow: hidden;
+  position: relative;
+  $self: &;
+
+  &:hover {
+    #{$self}__actions {
+      transform: translateX(0);
+    }
+
+    #{$self}__assign-btn {
+      opacity: 1;
+    }
+  }
+
+  &__name {
+    font-size: $font-size-large;
+    color: $color-blue;
+  }
+
+  &__publishers-title {
+    font-size: $font-size-small;
+    color: $color-blue;
+    font-weight: 500;
+  }
+
+  &__publishers {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  &__publisher {
+    width: fit-content;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: $color-yellow;
+    color: #000;
+    font-size: $font-size-small;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease-in-out;
+
+    &-wholesaler-name {
+      font-weight: 500;
+    }
+  }
+
+  &__assign-btn {
+    width: fit-content;
+    border-radius: 4px;
+    padding: 4px 8px;
+    background-color: $color-green;
+    color: #fff;
+    font-size: $font-size-small;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  &__actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: 0.3s ease-in-out;
+    transform: translateX(calc(100% + 15px));
+  }
+
+  &__assign-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    &--loading {
+      min-width: 320px;
+      min-height: 320px;
+      #{$self}__assign-modal-content {
+        display: none;
+      }
+      #{$self}__assign-modal-loader {
+        display: block;
+      }
+    }
+  }
+  &__assign-modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__assign-modal-loader {
+    display: none;
+    width: 120px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 12px solid #0000;
+    border-right-color: $color-yellow;
+    position: relative;
+    animation: l24 1s infinite linear;
+    margin: auto;
+
+    &:after {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: inherit;
+      animation: inherit;
+      animation-duration: 4s;
+
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      border: inherit;
+      animation: inherit;
+      animation-duration: 2s;
+    }
+
+    @keyframes l24 {
+      100% {
+        transform: rotate(1turn)
+      }
+    }
+  }
+
+  &__assign-modal-body-title {
+    font-size: $font-size-xlarge;
+    color: $color-blue;
+  }
+
+  &__assign-modal-publishers-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    height: 120px;
+    gap: 12px;
+    align-items: stretch;
+    align-content: baseline;
+
+    #{$self}__publisher {
+      background-color: $color-green;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    &--all {
+      overflow: auto;
+      height: auto;
+
+      #{$self}__publisher {
+        color: #000;
+        background-color: $color-gray;
+
+        &:hover {
+          background-color: $color-green;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  &__assign-modal-body-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__assign-modal-body-list-title {
+    font-size: $font-size-base;
+    font-weight: 500;
+  }
+}

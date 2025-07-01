@@ -1,0 +1,21 @@
+@use "variables" as *;
+
+.flash-message {
+  font-size: $font-size-small;
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: $color-white;
+  background-color: $color-gray;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  &--success {
+    background-color: $color-green;
+  }
+  &--error {
+    background-color: $color-red;
+  }
+  &--warning {
+    background-color: $color-yellow;
+    color: #000;
+  }
+}

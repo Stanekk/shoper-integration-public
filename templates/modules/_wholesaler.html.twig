@@ -1,0 +1,18 @@
+{% import 'macros/macros.html.twig' as ui %}
+
+<div class="wholesaler">
+    <h2 class="wholesaler__name">{{ wholesaler.getName() }}</h2>
+    <h3 class="wholesaler__publishers-title">Assigned publishers</h3>
+    <div class="wholesaler__publishers">
+        {% for publisher in  wholesaler.getPublishers() %}
+            <span class="wholesaler__publisher">{{ publisher.getName() }}</span>
+        {% endfor %}
+        <span data-wholesaler-id="{{ wholesaler.getId() }}" class="wholesaler-assign-modal-btn wholesaler__assign-btn">Assign</span>
+    </div>
+    {% if wholesaler.getCreatedAt() is defined and wholesaler.getCreatedAt() is not null %}
+        <span class="form-dashboard__created-at">Created at: {{ wholesaler.getCreatedAt() | date('d M Y H:i') }}</span>
+    {% endif %}
+    <div class="wholesaler__actions">
+        {{ ui.delete_button('app_wholesalers_delete', wholesaler.getId(), 'delete_single_') }}
+    </div>
+</div>

@@ -1,0 +1,208 @@
+@use "_variables" as *;
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: $font-size-medium;
+    font-weight: 500;
+  }
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+}
+
+.form-input {
+  font-size: $font-size-medium;
+  align-self: stretch;
+  background: none;
+  border: none;
+  width: 100%;
+  color: $color-white;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.form-row-unit:focus-within {
+  outline: 2px solid $color-green;
+  border-radius: 4px;
+  border-bottom: none;
+}
+
+.form-label {
+  display: flex;
+}
+
+.form-label-icon {
+  color: $color-white;
+}
+
+.form-row-unit {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0;
+  gap: 6px;
+  border-bottom: 1px solid #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.login-form {
+  max-width: 390px;
+  margin: auto;
+  padding: 24px;
+  gap: 12px;
+  border-radius: 12px;
+  background-color: $color-blue;
+
+  &__description {
+    text-align: center;
+    color: $color-white;
+    font-size: $font-size-small;
+  }
+
+  @include breakpoint-xs {
+    width: 80%;
+    max-width: unset;
+  }
+}
+
+.form-dashboard {
+  &__info-message {
+    background-color: $color-light-blue;
+    color: #fff;
+    font-size: $font-size-small;
+    padding: 8px;
+    border-radius: 4px;
+
+    a {
+      color: $color-yellow;
+      text-decoration: none;
+    }
+
+    &--additional {
+      background-color: $color-blue;
+    }
+  }
+
+  .form-label {
+    font-size: $font-size-small;
+    font-weight: 300;
+  }
+
+  &__created-at {
+    font-size: $font-size-small;
+    color: $color-blue;
+    font-weight: 300;
+  }
+
+  &__upload-file-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid #ededed;
+    border-radius: 8px;
+    padding: 4px;
+    cursor: pointer;
+
+    .form-label {
+      font-weight: 400;
+      font-size: $font-size-medium;
+      align-self: flex-start;
+    }
+  }
+
+  &__upload-file-label {
+    font-size: $font-size-small;
+    color: $color-blue;
+    font-weight: 500;
+    margin-bottom: -12px;
+  }
+
+  &__upload-file-wrapper-icon {
+    color: $color-gray;
+    font-size: calc($font-size-xxlarge + 1rem);
+
+    &--uploaded {
+      color: $color-green;
+    }
+  }
+
+  &__upload-file-name {
+    color: $color-green;
+    font-size: $font-size-medium;
+  }
+}
+
+.form-dashboard-errors {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+  flex-wrap: wrap;
+
+  &__message {
+    font-size: $font-size-small;
+    background-color: $color-red;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #fff;
+  }
+}
+
+.form-input-dashboard {
+  color: $color-blue;
+  box-shadow: 0px 0px 4px -2px rgb(55 55 55);
+  border-radius: 8px;
+  font-size: calc($font-size-small + 3px);
+  padding: 10px;
+  font-weight: 100;
+
+  &::placeholder {
+    font-size: 14px;
+    color: $color-gray;
+  }
+}
+
+.form-column {
+  gap: 12px;
+
+  &__content {
+    width: 100%;
+    gap: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+.form-upload-file {
+  display: none;
+}
+
+.form-actions {
+  margin-left: auto;
+}
+
+.form-link {
+  text-align: right;
+  color: #fff;
+  font-size: $font-size-small;
+  text-decoration: none;
+}
+
+.form-filters {
+  gap: 4px;
+  margin-top: 12px;
+}

@@ -1,0 +1,33 @@
+{% import 'macros/macros.html.twig' as ui %}
+
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Products {% endblock %}
+
+{% block dashboard_title %}
+    Products
+{% endblock %}
+
+{% block dashboard_main %}
+    <div class="products">
+        <h2 class="form__title">List of products imported from shoper store</h2>
+        <p class="form-dashboard__info-message">The table shows all products that have been imported from your shoper
+            store.</p>
+        {{ form_start(filtersForm,{'attr': {'class': 'form form-dashboard form-filters'}}) }}
+        {% include 'ui/filters-description.html.twig' %}
+        {% include 'modules/_filters.html.twig' %}
+        <span class="form-dashboard__created-at">Found in the application: {{ pagination.getTotalItemCount() }}</span>
+        {{ form_end(filtersForm) }}
+
+        {{ ui.delete_button('app_products_delete', null, 'app_products_delete_token') }}
+
+        <div id="import_products">
+            {{ ui.import_button('app_products_import', 'app_products_import_token') }}
+        </div>
+
+        {% include 'pages/products/_table-products.html.twig' with {'products': pagination.items} %}
+        <div class="pagination">
+            {{ knp_pagination_render(pagination, 'pagination/pagination.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

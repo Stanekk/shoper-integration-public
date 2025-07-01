@@ -1,0 +1,39 @@
+@use "variables" as *;
+
+.users-list {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  .user {
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 9px 6px rgb(243 243 243);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+
+    &__super-admin {
+      color: $color-red;
+      font-weight: bold;
+      font-size: $font-size-small;
+    }
+
+    &__email {
+      font-size: $font-size-medium;
+      color: $color-blue;
+      font-weight: 500;
+    }
+    &__actions {
+      top: 15px;
+      right: 15px;
+      transition: 0.3s ease-in-out;
+      transform: translateX(calc(100% + 15px));
+    }
+  }
+  .user:hover .user__actions {
+    transform: translateX(0);
+  }
+}

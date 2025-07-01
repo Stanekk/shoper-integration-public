@@ -1,0 +1,51 @@
+@use "variables" as *;
+.btn {
+  padding: 12px;
+  color: $color-white;
+  font-size: $font-size-base;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+.btn-accept {
+  background-color: $color-green;
+  &:hover {
+    cursor: pointer;
+    background-color: darken($color-green,8);
+  }
+}
+.btn-form-dashboard {
+  display: block;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-left: auto;
+}
+
+.btn-link {
+  display: flex;
+  width: fit-content;
+  padding: 4px 12px;
+  color: #fff;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 4px;
+  background-color: $color-gray;
+  cursor: pointer;
+  border: none;
+  $self: &;
+
+  &__icon {
+    font-size: 20px;
+  }
+  &--delete {
+    background-color: $color-red;
+  }
+  &--action {
+    background-color: $color-green;
+  }
+  &--small {
+    padding: 4px;
+    #{ $self }__icon {
+      font-size: 16px;
+    }
+  }
+}

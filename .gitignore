@@ -1,0 +1,64 @@
+### Symfony Framework ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public_html/bundles/
+/var/
+/vendor/
+!var/.gitignore
+!vendor/.gitignore
+
+### PHPUnit ###
+/phpunit.xml
+.phpunit.result.cache
+
+### Symfony PHPUnit Bridge ###
+.phpunit.result.cache
+/phpunit.xml
+
+### Symfony Asset Mapper ###
+/public_html/assets/
+/assets/vendor/
+
+### Logi ###
+*.log
+*.log.*
+
+### Systemowe pliki edytora ###
+.idea/
+*.iml
+*.swp
+*.swo
+*.bak
+*~
+
+### Ignorowanie plików Composer ###
+/composer.phar
+
+### Ignorowanie buildów ###
+/node_modules/
+/build/
+/dist/
+
+### Ignorowanie cache przeglądarki ###
+*.cache
+*.cache-loader
+.cache/
+
+### Ignorowanie plików wirtualnych maszyn ###
+*.vagrant
+.vagrant/
+.vagrant.d/
+*.virtualenv
+
+### Inne ###
+.DS_Store
+Thumbs.db
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public_html/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

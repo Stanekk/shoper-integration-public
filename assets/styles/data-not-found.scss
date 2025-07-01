@@ -1,0 +1,11 @@
+@use "variables" as *;
+.data-not-found {
+  text-align: center;
+  &__title {
+    font-size: $font-size-xlarge;
+  }
+  &__description {
+    font-size: $font-size-base;
+    color: $color-blue;
+  }
+}

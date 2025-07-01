@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <form method="post" class="form login-form">
+        <img src="{{ asset('build/images/store_logo.png') }}" alt="Shop logo">
+        <p class="login-form__description">Log in to the application used to import stock into the shopper store</p>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-message flash-message--{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="form-row">
+            <div class="form-row-unit">
+                <label class="form-label" for="username">
+                    <span class="form-label-icon material-symbols-outlined">mail</span>
+                </label>
+                <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-input"
+                       autocomplete="email" required autofocus>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-row-unit">
+                <label class="form-label" for="password">
+                    <span class="form-label-icon material-symbols-outlined">password</span>
+                </label>
+                <input type="password" name="_password" id="password" class="form-input" autocomplete="current-password"
+                       required>
+            </div>
+        </div>
+
+        <div class="form-row form-actions">
+            <a class="form-link" href="{{ path('app_reset_password') }}">Reset password</a>
+        </div>
+
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
+
+        {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <input type="checkbox" name="_remember_me" id="_remember_me">
+            <label for="_remember_me">Remember me</label>
+        </div>
+        #}
+
+        {% if error %}
+            <div class="alert alert-danger">
+                <span class="material-symbols-outlined">error</span>{{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        <button class="btn btn-accept" type="submit">
+            Sign in
+        </button>
+    </form>
+{% endblock %}

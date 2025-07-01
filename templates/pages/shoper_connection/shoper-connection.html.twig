@@ -1,0 +1,41 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Shoper Connection Settings{% endblock %}
+
+{% block dashboard_title %}
+    Shoper connection
+{% endblock %}
+
+{% block dashboard_main %}
+    {{ form_start(form,{'attr': {'class': 'form form-column form-dashboard'}}) }}
+    <h2 class="form__title">Configure shoper user</h2>
+    <p class="form-dashboard__info-message">To enable the application to work, you need to configure a user in the shoper store who will be granted access via the API <a target="_blank" href="https://www.shoper.pl/learn/artykul/jak-w-shoperze-utworzyc-dostep-po-api">Help me</a></p>
+    {% if formErrors is not empty %}
+        <ul class="form-dashboard-errors">
+            {% for error in formErrors %}
+                <li class="form-dashboard-errors__message">{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="form-column__content">
+        <div class="form-column__content-column">
+            {{ form_label(form.restUser, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.restUser, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(form.restPassword, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.restPassword, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(form.shopUrl, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.shopUrl, {'attr': {'class': 'form-input form-input-dashboard','placeholder': 'Example: https://czerwonatwierdza.pl/'}}) }}
+        </div>
+    </div>
+    {% if createdAt is defined and createdAt is not null %}
+        <span class="form-dashboard__created-at">Created at: {{ createdAt }}</span>
+    {% endif %}
+    <div class="form-dashboard__actions">
+        {{ form_widget(form.save, {'attr': {'class': 'btn btn-accept btn-form-dashboard'}}) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

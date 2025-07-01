@@ -1,0 +1,26 @@
+<div class="form-column__content">
+    <div class="form-column__content-column">
+        {{ form_widget(filtersForm.filter, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+    </div>
+    {% if filtersForm.vars.data.filter is not empty %}
+        {% set filterList = filtersForm.vars.data.filter|split(',') %}
+        <div class="active-filters">
+            <ul class="active-filters__list">
+                {% for term in filterList %}
+                    {% set cleaned = term|trim %}
+                    {% if cleaned %}
+                        {% set remaining = filterList|filter(v => v|trim != cleaned)|join(',') %}
+                        <li class="active-filters__item">
+                            <a href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'filter': remaining})) }}">
+                                {{ cleaned }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</div>
+<div class="form-dashboard__actions">
+    <button class="btn btn-accept btn-form-dashboard" type="submit">Search</button>
+</div>

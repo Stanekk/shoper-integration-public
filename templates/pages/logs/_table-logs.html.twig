@@ -1,0 +1,35 @@
+{% extends 'ui/base-table.html.twig' %}
+
+    {% block table_header %}
+        <th>Channel</th>
+        <th>Level Name</th>
+        <th>Message</th>
+        <th>Created At</th>
+        <th>Context</th>
+        <th>Extra data</th>
+    {% endblock %}
+
+    {% block table_body %}
+        {% for log in logs %}
+            <tr class="base-table__row">
+                <td>{{ log.getChannel() }}</td>
+                <td>{{ log.getLevelName() }}</td>
+                <td class="base-table__cell">{{ log.getMessage() }}</td>
+                <td class="base-table__cell--context">{{ log.getCreatedAt()|date('d-m-Y H:i:s') }}</td>
+                <td class="base-table__cell--context">
+                    {% if log.getContext() is not empty %}
+                        <pre>{{ log.getContext()|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_UNICODE')) }}</pre>
+                    {% else %}
+                        <span>No context</span>
+                    {% endif %}
+                </td>
+                <td class="base-table__cell--context">
+                    {% if log.getExtra() is not empty %}
+                        <pre>{{ log.getExtra()|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_UNICODE')) }}</pre>
+                    {% else %}
+                        <span>No extra data</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% endblock %}

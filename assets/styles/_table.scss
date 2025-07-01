@@ -1,0 +1,67 @@
+@use "variables" as *;
+
+
+.table-container {
+  overflow-x: auto;
+}
+.base-table {
+  width: 100%;
+  margin-top: 32px;
+  border-spacing: 0;
+  &__header {
+    th {
+      text-align: left;
+      font-weight: 600;
+      font-size: $font-size-small;
+    }
+  }
+  &__row {
+    &:nth-child(2n+1) {
+      background-color: #f2f4ff;
+    }
+    td {
+      font-size: 12px;
+      padding: 12px 8px;
+      vertical-align: middle;
+    }
+    &--product-name {
+      max-width: 120px;
+    }
+    &--stock {
+      color: $color-green;
+    }
+    &--old-stock {
+      color: $color-red;
+    }
+    &--actions {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    &--executed {
+      background-color: #56e777;
+      &:nth-child(2n+1) {
+        background-color: #28c54b;
+      }
+    }
+  }
+  &__cell {
+    width: 200px;
+    &--context {
+      pre {
+        margin: 0;
+        padding: 8px;
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 4px;
+        font-size: 11px;
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-width: 300px;
+        max-height: 150px;
+        overflow: auto;
+      }
+
+    }
+  }
+}

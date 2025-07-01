@@ -1,0 +1,49 @@
+$font-size-small: 0.875rem;
+$font-size-base: 1rem;
+$font-size-medium: 1.125rem;
+$font-size-large: 1.25rem;
+$font-size-xlarge: 1.5rem;
+$font-size-xxlarge: 2rem;
+$font-size-huge: 3rem;
+
+
+$color-red: #BC1910;
+$color-white: #fff;
+$color-blue: #131e53;
+$color-yellow: #FFD700;
+$color-gray: #d2d2d2;
+$color-green: #28A745;
+$color-light-blue: #3FA9F5;
+
+// Breakpoints
+$breakpoint-xs: 320px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+@mixin breakpoint-xs {
+  @media (max-width: $breakpoint-sm - 1px) { @content; }
+}
+
+@mixin breakpoint-sm-range {
+  @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md - 1px) { @content; }
+}
+
+@mixin breakpoint-md-range {
+  @media (min-width: $breakpoint-md) and (max-width: $breakpoint-lg - 1px) { @content; }
+}
+
+@mixin breakpoint-lg-range {
+  @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl - 1px) { @content; }
+}
+
+@mixin breakpoint-xl-range {
+  @media (min-width: $breakpoint-xl) and (max-width: $breakpoint-xxl - 1px) { @content; }
+}
+
+@mixin breakpoint-xxl {
+  @media (min-width: $breakpoint-xxl) { @content; }
+}
+

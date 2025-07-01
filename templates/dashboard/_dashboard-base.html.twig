@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SWI - Dashboard{% endblock %}
+
+{% set page = app.request.get('_route') %}
+
+{% block body %}
+    <div class="dashboard">
+        {%  include 'user/_user-dashboard-panel.html.twig' %}
+        <div class="dashboard-main">
+            <h1 class="dashboard-main__title">{% block dashboard_title %}{% endblock %}</h1>
+            {% for label, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="flash-message flash-message--{{ label }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            <div class="dashboard-content">
+                {% include 'ui/full-screen-mode.html.twig' %}
+                {% block dashboard_main %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

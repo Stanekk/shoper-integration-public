@@ -1,0 +1,13 @@
+<span class="health-check">
+    {% if isShoperConnection() %}
+        <span class="health-check__icon health-check__icon--positive"></span>
+        <span class="health-check__text">
+            Connected to shoper
+        </span>
+    {% else %}
+        <span class="health-check__icon health-check__icon--negative"></span>
+        <span class="health-check__text">
+            No connection to the shoper
+        </span>
+    {% endif %}
+</span>

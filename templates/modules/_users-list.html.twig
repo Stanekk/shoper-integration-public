@@ -1,0 +1,15 @@
+<div class="users-list">
+    {% for user in users %}
+        <div class="user">
+            <p class="user__email">
+                {{ user.getEmail() }}
+            </p>
+            {% if isSuperAdmin(user) %}
+                <span class="user__super-admin">Super admin</span>
+            {% endif %}
+            <div class="user__actions">
+                <a class="btn-link btn-link--small btn-link--delete" href="{{ path('app_settings_user_delete', { id: user.getId() }) }}"><span class="btn-link__icon material-symbols-outlined">delete</span></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

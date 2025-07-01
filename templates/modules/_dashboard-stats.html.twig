@@ -1,0 +1,109 @@
+<div class="dashboard-stats">
+    <div class="dashboard-stats__row">
+        <div class="stats">
+            <h2>Store stats</h2>
+            <ul class="stats__content">
+                <li class="stats__content-item">
+                    <span class="material-symbols-outlined stats__content-item-icon">orders</span>
+                    <span class="stats__content-item-name">Orders</span>
+                    <span class="stats__content-item-value">{{ stats['general']['orders'] }}</span>
+                </li>
+                <li class="stats__content-item">
+                    <span class="material-symbols-outlined stats__content-item-icon">inventory_2</span>
+                    <span class="stats__content-item-name">Products</span>
+                    <span class="stats__content-item-value">{{ stats['general']['products'] }}</span>
+                </li>
+                <li class="stats__content-item">
+                    <span class="material-symbols-outlined stats__content-item-icon">production_quantity_limits</span>
+                    <span class="stats__content-item-name">Out of stock</span>
+                    <span class="stats__content-item-value stats__content-item-value--negative">{{ stats['general']['out_of_stock_products'] }}</span>
+                </li>
+                <li class="stats__content-item">
+                    <span class="material-symbols-outlined stats__content-item-icon">person</span>
+                    <span class="stats__content-item-name">Customers</span>
+                    <span class="stats__content-item-value">{{ stats['general']['customers'] }}</span>
+                </li>
+                <li class="stats__content-item">
+                    <span class="material-symbols-outlined stats__content-item-icon">trending_up</span>
+                    <span class="stats__content-item-name">Today orders</span>
+                    <span class="stats__content-item-value {% if stats['today']['orders'] > 0 %} stats__content-item-value--positive {% endif %}">{{ stats['today']['orders'] }}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="stats stats--app">
+                <div class="stats__column">
+                    {% if product_import_stats is defined and product_import_stats|length > 0 %}
+                    <h2 class="stats__title">Product Importer</h2>
+                    <p class="stats__text">All products in the application:
+                        <span class="stats__text-value">{{ product_import_stats['totalProducts'] }}</span>
+                    </p>
+                    <p class="stats__text">Products without EAN:
+                        <span class="stats__text-value stats__text-value--negative">{{ product_import_stats['noEan'] }}</span>
+                    </p>
+                    <p class="stats__text">Updated:
+                        <span class="stats__text-value stats__text-value--positive">{{ product_import_stats['updated'] }}</span>
+                    </p>
+                    <p class="stats__text">New products:
+                        <span class="stats__text-value stats__text-value--positive">{{ product_import_stats['new'] }}</span>
+                    </p>
+                    <p class="stats__text">Execution time:
+                        <span class="stats__text-value"><strong>{{ product_import_stats['executionTime'] }}</strong> sec</span>
+                    </p>
+                    <p class="stats__text stats__text--date">
+                       Process executed on:
+                        <span class="stats__text-value">
+                    {% if product_import_stats['createdAt'] is not null %}
+                        {{ product_import_stats['createdAt']|date('d F Y H:i:s') }}
+                    {% else %}
+                        No date available
+                    {% endif %}
+                </span>
+                    </p>
+                    {% else %}
+                        <h2 class="stats__title">Product Importer</h2>
+                        <p class="stats__text stats__text--danger">Your app hasn't synced products with your store yet, do it now</p>
+                        <a class="stats__link" href="{{ path('app_products') }}">Import products</a>
+                    {% endif %}
+                </div>
+            <div class="stats__column">
+                {% if fileImportStats is defined and fileImportStats|length > 0 %}
+                    <h2 class="stats__title">Files importer</h2>
+                    <p class="stats__text">Number of files processed:
+                        <span class="stats__text-value">{{ fileImportStats | length}}</span>
+                    </p>
+                    {% for fileImportStat in fileImportStats %}
+                        <div class="stats__file">
+                            <p class="stats__text">File: {{ fileImportStat.getFilename() }}</p>
+                            <p class="stats__text">Products found:
+                                <span class="stats__text-value stats__text-value--positive">{{ fileImportStat.getNumberOfProducts() }}</span>
+                            </p>
+                            <p class="stats__text">Number of products not found:
+                                <span class="stats__text-value stats__text-value--negative">{{ fileImportStat.getNumberOfNotFoundProducts() }}</span>
+                            </p>
+                            <p class="stats__text">Number of products excluded by status:
+                                <span class="stats__text-value">{{ fileImportStat.getNumberOfProductsExcludedByStatus() }}</span>
+                            </p>
+                            <p class="stats__text">Number of products where stock has not changed:
+                                <span class="stats__text-value">{{ fileImportStat.getNumberOfProductsStockNotChanged() }}</span>
+                            </p>
+                            <p class="stats__text stats__text--date">
+                                File processed:
+                                <span class="stats__text-value">
+                            {% if fileImportStat.getCreatedAt() is not null %}
+                                {{ fileImportStat.getCreatedAt()|date('d F Y H:i:s') }}
+                            {% else %}
+                                No date available
+                            {% endif %}
+                        </span>
+                            </p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h2 class="stats__title">Files importer</h2>
+                    <p class="stats__text stats__text--danger">The import of stock levels from csv files has not been started yet</p>
+                    <a class="stats__link" href="{{ path('app_importer') }}">Import stock</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

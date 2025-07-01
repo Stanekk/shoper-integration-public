@@ -1,0 +1,57 @@
+<div class="user-dashboard-panel" id="user-dashboard-panel">
+    <div class="user-dashboard-panel-logo">
+        <img src="{{ asset('build/images/store_logo.png') }}" alt="Shop logo">
+        <p class="user-dashboard-panel-logo__text">Shoper Warehouse Integration</p>
+    </div>
+    {% if app.user %}
+        <p class="user-dashboard-panel-name">
+            You are logged in as <span class="user-dashboard-panel-name__email">{{ app.user.userIdentifier }}</span>
+        </p>
+    {% endif %}
+    <nav class="user-dashboard-panel-navigation">
+        <ul class="user-dashboard-panel-navigation__content">
+            <li class="user-dashboard-panel-navigation-main-item">
+                <a href="{{ path('app_home') }}" class="user-dashboard-panel-nav-item {% if page == 'app_home' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">dashboard</span><span>Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <span class="user-dashboard-panel-navigation-category">General</span>
+                <a href="{{ path('app_wholesalers') }}" class="user-dashboard-panel-nav-item {% if page == 'app_wholesalers' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">warehouse</span><span>Wholesalers</span>
+                </a>
+                <a href="{{ path('app_publishers') }}" class="user-dashboard-panel-nav-item {% if page == 'app_publishers' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">playing_cards</span><span>Publishers</span>
+                </a>
+                <a href="{{ path('app_importer') }}" class="user-dashboard-panel-nav-item {% if page == 'app_importer' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">upgrade</span><span>Import stock</span>
+                </a>
+                <a href="{{ path('app_importer_collected_data') }}" class="user-dashboard-panel-nav-item {% if page == 'app_importer_collected_data' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">sync_alt</span><span>Importer data</span>
+                </a>
+                <a href="{{ path('app_products') }}" class="user-dashboard-panel-nav-item {% if page == 'app_products' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">casino</span><span>Products</span>
+                </a>
+            </li>
+
+            <li>
+                <span class="user-dashboard-panel-navigation-category">Support</span>
+                <a href="{{ path('app_settings') }}" class="user-dashboard-panel-nav-item {% if page == 'app_settings' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">settings</span><span>Settings</span>
+                </a>
+                <a href="{{ path('app_shoper_connection') }}" class="user-dashboard-panel-nav-item {% if page == 'app_shoper_connection' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">storefront</span><span>Shoper connection</span>
+                </a>
+                <a href="{{ path('app_logs') }}" class="user-dashboard-panel-nav-item {% if page == 'app_logs' %}user-dashboard-panel-nav-item--active{% endif %}">
+                    <span class="material-symbols-outlined">description</span><span>Logs</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    {% include 'ui/health-check.html.twig' %}
+    <a class="user-dashboard-panel-nav-item user-dashboard-panel-logout" href="{{ path('app_logout') }}">
+        <span class="user-dashboard-panel-nav-item__icon material-symbols-outlined">logout</span>
+        <span>Logout</span>
+    </a>
+</div>

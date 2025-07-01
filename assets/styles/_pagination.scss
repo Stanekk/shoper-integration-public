@@ -1,0 +1,37 @@
+@use "variables" as *;
+
+.paginator {
+  margin-top: 2rem;
+  text-align: center;
+
+  ul {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 6px;
+    overflow: hidden;
+
+    li {
+      a, span {
+        display: block;
+        padding: 4px 12px;
+        font-size: $font-size-small;
+        text-decoration: none;
+        color: #333;
+        transition: background 0.2s;
+        border-radius: 20px;
+      }
+
+      a:hover {
+        background: #f0f0f0;
+      }
+
+      &.active span {
+        background: $color-yellow;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+
+{% import 'macros/macros.html.twig' as ui %}
+
+<div class="publisher">
+<h2 class="publisher__name">{{ publisher.getName() }}</h2>
+    <span class="publisher__info">Shoper id: <span class="publisher__info-id">{{ publisher.getShoperId() }}</span></span>
+    <div class="publisher__actions">
+        {{ ui.delete_button('app_publishers_delete_single', publisher.getId(), 'delete_single_') }}
+    </div>
+</div>

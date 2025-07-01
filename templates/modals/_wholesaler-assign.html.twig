@@ -1,0 +1,26 @@
+{% extends 'modals/_modal.html.twig' %}
+
+{% block modal_content %}
+    <div class="wholesaler__assign-modal-body">
+        <div class="wholesaler__assign-modal-loader"></div>
+        <div id="url-data"
+             data-publishers-url="{% if publishers_url is defined %}{{ publishers_url }}{% endif %}"
+             data-wholesalers-url="{% if wholesalers_url is defined %}{{ wholesalers_url }}{% endif %}"
+            data-wholesaler-assing-url="{% if wholesaler_assing_url is defined %}{{ wholesaler_assing_url }}{% endif %}">
+        </div>
+        <div class="wholesaler__assign-modal-content">
+            <h3 class="wholesaler__assign-modal-body-title">Assigning publishers to <span id="wholesaler-assign-name">Rebel</span></h3>
+            <h2 class="wholesaler__assign-modal-body-list-title">Assigned:</h2>
+            <div id="modal-publishers-list" class="wholesaler__assign-modal-publishers-list">
+            </div>
+            <h2 class="wholesaler__assign-modal-body-list-title">All publishers</h2>
+            <div class="form-dashboard__info-message">If you decide to assign a publisher that is already assigned to another wholesaler it will be removed from that one and assigned to this one</div>
+            <div class="wholesaler__assign-modal-publishers-list wholesaler__assign-modal-publishers-list--all">
+            </div>
+            <div class="wholesaler__assign-modal-body-actions">
+                <button id="modal-wholesaler-cancel-btn" class="btn btn-link--delete btn-form-dashboard">Cancel</button>
+                <button id="modal-wholesaler-assign-btn" class="btn btn-link--action btn btn-accept btn-form-dashboard">Save</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

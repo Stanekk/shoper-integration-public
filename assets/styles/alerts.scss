@@ -1,0 +1,15 @@
+@use "_variables" as *;
+.alert {
+  width: 100%;
+  text-align: center;
+  padding: 4px 12px;
+  font-size: $font-size-small;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 5px;
+  &-danger {
+    background-color: $color-red;
+    color: #fff;
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Logs {% endblock %}
+
+{% block dashboard_title %}
+    Logs
+{% endblock %}
+
+{% block dashboard_main %}
+    <div class="products">
+        {% if logs is empty %}
+            {% include "modules/_data-not-found.html.twig" with {"title": "No logs found", "description": "Probably cleared all logs, perform some action in the application and the logs should appear."} %}
+        {% else %}
+            <h2 class="form__title">List of all logs from the application</h2>
+            <p class="form-dashboard__info-message">The table shows all application logs divided into the corresponding channels</p>
+            {% include 'pages/logs/_table-logs.html.twig' with {'logs': logs} %}
+        {% endif %}
+    </div>
+{% endblock %}

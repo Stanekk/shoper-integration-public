@@ -1,0 +1,78 @@
+@use "variables" as *;
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 12px;
+  .filter {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #000;
+    font-size: $font-size-small;
+    border: 1px solid $color-gray;
+    transition: 0.4s ease-in-out;
+    &:hover {
+      background-color: $color-yellow;
+      color: #fff;
+    }
+  }
+}
+
+.filters-info {
+  width: fit-content;
+  margin: 12px 0;
+  padding: 4px 12px;
+  background-color: $color-blue;
+  border-radius: 8px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: #ffff;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.active-filters {
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  &__item {
+    background-color: #eef2f7;
+    border: 1px solid #cbd5e1;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: $font-size-small;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      text-transform: capitalize;
+      gap: 8px;
+      color: #000;
+      transition: 0.3s ease-in-out;
+    }
+    &:hover {
+      background-color: $color-red;
+      color: #FFFFFF;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}

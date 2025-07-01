@@ -1,0 +1,54 @@
+@use "variables" as *;
+.publishers {
+  &__list {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px 10px;
+  }
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  &__total {
+    margin-top: 14px;
+    display: block;
+    margin-bottom: 14px;
+    font-size: $font-size-small;
+  }
+}
+
+.publisher {
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 9px 6px rgb(243 243 243);
+  overflow: hidden;
+  position: relative;
+  $self: &;
+  &:hover {
+    #{$self}__actions {
+      transform: translateX(0);
+    }
+  }
+  &__name {
+    font-size: $font-size-medium;
+    color: $color-blue;
+    font-weight: 500;
+  }
+  &__info {
+    font-size: $font-size-small;
+    font-weight: 300;
+    color: #000;
+    &-id {
+      font-weight: 500;
+    }
+  }
+  &__actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    transition: 0.3s ease-in-out;
+    transform: translateX(calc(100% + 15px));
+  }
+}

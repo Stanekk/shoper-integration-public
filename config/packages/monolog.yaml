@@ -1,0 +1,24 @@
+monolog:
+    channels: [importer, user, deprecation, api]
+
+    handlers:
+        main:
+            type: service
+            id: App\Monolog\Handler\MainDatabaseLoggerHandler
+            level: error
+            channels: ["!event", "!request","!doctrine","!security","!importer","!user","!api","!http_client"]
+        mailer:
+            type: stream
+            path: "%kernel.logs_dir%/mailer.log"
+            level: debug
+        databaseHandler:
+            type: service
+            id: App\Monolog\Handler\DatabaseLoggerHandler
+            level: info
+            channels: [ importer, user, api ]
+
+        deprecation:
+            type: stream
+            path: php://stderr
+            formatter: monolog.formatter.json
+            channels: [deprecation]

@@ -1,0 +1,30 @@
+{% import 'macros/macros.html.twig' as ui %}
+
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Publishers {% endblock %}
+
+{% block dashboard_title %}
+    Publishers
+{% endblock %}
+
+{% block dashboard_main %}
+    <div class="publishers">
+        {% if publishers is empty %}
+            {% include "modules/_data-not-found.html.twig" with {"title": "List of publishers not found", "description": "List of publishers has not been imported from shoper store, process may take a while"} %}
+            {{ ui.import_button('app_publishers_import','import_publishers') }}
+        {% else %}
+            <p class="form-dashboard__info-message">Any deletion of a single item or all affects only this application, <strong>your store is safe.</strong></p>
+            <div class="publishers__list">
+                {% for publisher in publishers %}
+                    {% include 'modules/_publisher.html.twig' with {'publisher': publisher} %}
+                {% endfor %}
+            </div>
+            <span class="publishers__total">Total: <strong>{{ publishers|length }}</strong></span>
+            <div class="publishers__actions">
+                <a class="btn-link btn-link--action" href="{{ path('app_publishers_import') }}">Re-import</a>
+                {{ ui.delete_button('app_publishers_delete-all', null, 'delete_all_publishers') }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

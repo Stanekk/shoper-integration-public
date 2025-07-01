@@ -1,0 +1,110 @@
+@use "_variables" as *;
+
+.dashboard {
+  flex-grow: 1;
+  display: flex;
+}
+
+.dashboard-main {
+  width: 100%;
+  padding: 24px;
+  max-width: 1900px;
+  &__title {
+    font-size: $font-size-xxlarge;
+    letter-spacing: 1px;
+    color: #000;
+    text-transform: capitalize;
+  }
+}
+.dashboard-content {
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #fff;
+  border: 1px solid #ededed;
+
+}
+
+.user-dashboard-panel {
+  width: 238px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: $color-blue;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: 0.3s ease-in-out;
+  &--fullscreen {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    pointer-events: none;
+  }
+}
+.user-dashboard-panel-name {
+  color: $color-white;
+  font-size: $font-size-small;
+  &__email {
+    font-weight: bold;
+    color: $color-yellow;
+  }
+}
+.user-dashboard-panel-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  &__text {
+    color: $color-yellow;
+    font-size: $font-size-small;
+    text-align: center;
+  }
+}
+.user-dashboard-panel-navigation {
+  margin-top: 12px;
+  &__content {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+.user-dashboard-panel-logout {
+  display: block;
+  position: fixed;
+  bottom: 24px;
+}
+.user-dashboard-panel-navigation-main-item {
+  margin-bottom: 24px;
+}
+.user-dashboard-panel-navigation-category {
+  text-transform: uppercase;
+  margin: 12px 0;
+  display: block;
+  color: $color-white;
+  font-size: $font-size-small;
+  font-weight: 300;
+}
+.user-dashboard-panel-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: $font-size-base;
+  transition: 0.3s ease-in-out;
+  padding: 4px 8px;
+  border-radius: 8px;
+  &--active {
+    background-color: $color-yellow;
+    color: $color-blue;
+  }
+  &__icon {
+    font-size: $font-size-large;
+  }
+  &:hover {
+    background-color: #ffd6021c;
+    color: $color-white;
+  }
+}

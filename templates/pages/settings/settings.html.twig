@@ -1,0 +1,56 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Settings Settings{% endblock %}
+
+{% block dashboard_title %}
+    Settings
+{% endblock %}
+
+{% block dashboard_main %}
+    {{ form_start(newUserForm,{'attr': {'class': 'form form-column form-dashboard'}}) }}
+    <h2 class="form__title">App users</h2>
+    <p class="form-dashboard__info-message">List of users used to log into the application</p>
+
+    <div class="form-column__content">
+        <div class="form-column__content-column">
+            {{ form_label(newUserForm.email, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(newUserForm.email, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(newUserForm.password, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(newUserForm.password, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(newUserForm.passwordRepeat, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(newUserForm.passwordRepeat, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+    </div>
+    <div class="form-dashboard__actions">
+        {{ form_widget(newUserForm.save, {'attr': {'class': 'btn btn-accept btn-form-dashboard'}}) }}
+    </div>
+    {{ form_end(newUserForm) }}
+    {% include 'modules/_users-list.html.twig' with users %}
+
+    {{ form_start(changePasswordForm,{'attr': {'class': 'form form-column form-dashboard'}}) }}
+    <h2 class="form__title">Change password</h2>
+    <p class="form-dashboard__info-message">Change your account password</p>
+
+    <div class="form-column__content">
+        <div class="form-column__content-column">
+            {{ form_label(changePasswordForm.oldPassword, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(changePasswordForm.oldPassword, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(changePasswordForm.password, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(changePasswordForm.password, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+        <div class="form-column__content-column">
+            {{ form_label(changePasswordForm.passwordRepeat, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(changePasswordForm.passwordRepeat, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+        </div>
+    </div>
+    <div class="form-dashboard__actions">
+        {{ form_widget(changePasswordForm.savePassword, {'attr': {'class': 'btn btn-accept btn-form-dashboard'}}) }}
+    </div>
+    {{ form_end(changePasswordForm) }}
+{% endblock %}

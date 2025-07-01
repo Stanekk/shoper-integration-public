@@ -1,0 +1,34 @@
+.full-screen-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+  }
+
+  .material-symbols-outlined {
+    color: white;
+    font-size: 24px;
+    transition: opacity 0.2s ease;
+  }
+
+  &.active .enter {
+    display: none;
+  }
+
+  &:not(.active) .exit {
+    display: none;
+  }
+}

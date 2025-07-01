@@ -1,0 +1,93 @@
+@use "variables" as *;
+
+select.ts-hidden-accessible {
+  display: none !important;
+}
+
+.ts-wrapper.form-input-dashboard {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.ts-control {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.3rem;
+  min-height: 38px;
+  align-items: center;
+}
+
+.ts-control .item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  background-color: $color-green;
+  color: #fff;
+  padding: 2px 6px;
+  font-weight: normal;
+  font-size: $font-size-small;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+/* Style dla kontenera dropdown */
+.ts-dropdown-content {
+  max-height: 200px; /* Określa maksymalną wysokość listy opcji */
+  overflow-y: auto;  /* Dodaje pasek przewijania, jeśli jest za dużo opcji */
+}
+
+.ts-dropdown .option {
+  padding: 0.5rem 1rem;
+  margin: 0.25rem 0;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover - co się dzieje po najechaniu na opcję */
+.ts-dropdown .option:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+
+/* Dla opcji, która jest wybrana (aria-selected) */
+.ts-dropdown .option[aria-selected="true"] {
+  background-color: $color-light-blue;
+  color: #ffffff;
+}
+
+/* Stylowanie dla przycisku usuwania (×) */
+.ts-control .remove {
+  background-color: #00000057;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: none;
+  span {
+    color: #fff;
+    font-size: 14px;
+  }
+}
+
+/* Stylowanie przycisku usuwania na hover */
+.ts-control .remove:hover {
+  color: #ff2a2a; /* Ciemniejszy czerwony na hover */
+}
+
+/* Stylowanie przycisku usuwania na focus */
+.ts-control .remove:focus {
+  outline: none;
+  color: #e60000; /* Kolor podczas focus */
+}

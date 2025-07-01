@@ -1,0 +1,10 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Home{% endblock %}
+
+{% block dashboard_title %}Dashboard{% endblock %}
+{% block dashboard_main %}
+    {% if stats is defined and stats|length > 0 %}
+        {% include 'modules/_dashboard-stats.html.twig' with stats%}
+    {% endif %}
+{% endblock %}

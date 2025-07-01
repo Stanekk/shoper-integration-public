@@ -1,0 +1,22 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Importer {% endblock %}
+
+{% block dashboard_title %}
+    Importer collected data
+{% endblock %}
+
+{% block dashboard_main %}
+    <h2 class="form__title">Data collected from the importer</h2>
+    <p class="form-dashboard__info-message">The following table shows the data that was collected from the uploaded
+        files and settings</p>
+    {{ form_start(filtersForm,{'attr': {'class': 'form form-dashboard form-filters'}}) }}
+    {% include 'ui/filters-description.html.twig' %}
+    {% include 'modules/_filters.html.twig' %}
+    <span class="form-dashboard__created-at">Found in the application: {{ pagination.getTotalItemCount() }}</span>
+    {{ form_end(filtersForm) }}
+    {% include 'pages/importer/_data-table.html.twig' with {'importerData': pagination.items} %}
+    <div class="pagination">
+        {{ knp_pagination_render(pagination, 'pagination/pagination.html.twig') }}
+    </div>
+{% endblock %}

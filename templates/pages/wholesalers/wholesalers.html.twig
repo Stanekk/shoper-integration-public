@@ -1,0 +1,40 @@
+{% extends 'dashboard/_dashboard-base.html.twig' %}
+
+{% block title %}SWI - Wholesalers {% endblock %}
+
+{% block dashboard_title %}
+    Wholesalers
+{% endblock %}
+
+{% block dashboard_main %}
+    <div class="wholesalers">
+        {{ form_start(wholesalerForm,{'attr': {'class': 'form form-column form-dashboard'}}) }}
+        <h2 class="form__title">Add new wholesaler</h2>
+        <p class="form-dashboard__info-message">Adding a wholesaler will allow you to assign publishers to it so that when importing inventory, the assigned publisher will be taken into account from the assigned wholesaler</p>
+        {% if wholesalerFormErrors is not empty %}
+            <ul class="form-dashboard-errors">
+                {% for error in wholesalerFormErrors %}
+                    <li class="form-dashboard-errors__message">{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="form-column__content">
+            <div class="form-column__content-column">
+                {{ form_label(wholesalerForm.name, null, {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(wholesalerForm.name, {'attr': {'class': 'form-input form-input-dashboard'}}) }}
+            </div>
+        </div>
+        <div class="form-dashboard__actions">
+            {{ form_widget(wholesalerForm.save, {'attr': {'class': 'btn btn-accept btn-form-dashboard'}}) }}
+        </div>
+        {{ form_end(wholesalerForm) }}
+        <div class="wholesalers__list">
+            {% for wholesaler in wholesalers %}
+                {% include 'modules/_wholesaler.html.twig' with {'wholesaler': wholesaler} %}
+            {% endfor %}
+        </div>
+    </div>
+    {% if wholesalers|length %}
+        {% include 'modals/_wholesaler-assign.html.twig' with {'modal_id': 'wholesaler-modal','publishers_url': path('app_api_publishers'),'wholesalers_url': path('app_api_get_wholesalers'),'wholesaler_assing_url': path('app_api_wholesaler_assign',{'id': 0})} %}
+    {% endif %}
+{% endblock %}

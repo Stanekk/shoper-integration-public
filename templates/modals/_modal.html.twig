@@ -1,0 +1,8 @@
+<div {% if modal_id is defined and modal_id %}id="{{ modal_id }}"{% endif %} class="modal">
+    <div class="modal__content">
+        <span class="modal__icon-close material-symbols-outlined">close</span>
+        {% block modal_content %}
+        {% endblock %}
+    </div>
+</div>
+<span {% if modal_id is defined and modal_id %}id="modal-shadow-{{ modal_id }}"{% endif %} class="modal__shadow"></span>

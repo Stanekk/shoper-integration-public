@@ -1,0 +1,23 @@
+{% extends 'ui/base-table.html.twig' %}
+
+    {% block table_header %}
+        <th>EAN</th>
+        <th>Product Name</th>
+        <th>Shoper product Id</th>
+        <th>Stock</th>
+        <th>Status</th>
+        <th>Shoper store</th>
+    {% endblock %}
+
+    {% block table_body %}
+        {% for product in products %}
+            <tr class="base-table__row">
+                <td>{{ product.getEan() }}</td>
+                <td class="base-table__row--product-name">{{ product.getName() }}</td>
+                <td>{{ product.getShoperProductId() }}</td>
+                <td class="base-table__row--stock">{{ product.getStock() }}</td>
+                <td>{{ product.getStatusDescription() }}</td>
+                <td><a href="{{ product.getPermalink() }}" target="_blank">Click me</a></td>
+            </tr>
+        {% endfor %}
+    {% endblock %}
